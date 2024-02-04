@@ -1,0 +1,29 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "React learning",
+ 
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Deopa12Kunal/namaste-react-git.git"
+  },
+  "author": "Kunal Deopa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Deopa12Kunal/namaste-react-git/issues"
+  },
+  "homepage": "https://github.com/Deopa12Kunal/namaste-react-git#readme",
+  "dependencies": {
+    "-": "^0.0.1",
+    "D": "^1.0.0",
+    "parcel": "^2.11.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "process": "^0.11.10"
+  }
+}
