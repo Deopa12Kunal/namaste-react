@@ -1,0 +1,60 @@
+.header{
+display: flex;
+justify-content: space-between;
+border: 1px solid black;
+height: 100px;
+}
+.logo{
+    /* margin: 5px; */
+    width: 100px;
+}
+.nav-items{
+    padding: 0 10px;
+}
+.nav-items > ul{
+    font-size: 22px;
+  display: flex;
+  list-style-type: none;
+
+}
+.nav-items >ul >li{
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+}
+.res-container{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.res-card{
+   
+    margin: 5px;
+     padding: 10px;
+    width: 200px;
+    height:auto;
+    background-color: #f0f0f0;     
+}
+.res-card:hover{
+    cursor: pointer;
+    border: 2 px solid black;
+}
+.res-logo{
+    width: 100%;
+    height: 35%;
+}
+
+.search{
+    margin: 20px auto;
+  /* text-align: center; */
+  max-width: 100%;
+  /* position: relative; */
+  border: 1px solid black;
+}
+.filter-btn{
+    padding: 8px;
+    margin: 10px;
+    cursor: pointer;
+    border: 3px solid black;
+    /* background-color: blue; */
+}
