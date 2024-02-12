@@ -51,7 +51,7 @@ const Body = () => {
     const filteredList = listOfRestaurants.filter(
       (res) => res?.info?.avgRating > 4.4
     );
-    setListOfRestaurant(filteredList);
+    setFilteredRestaurants(filteredList);
   };
 //!FOR FAKE CARDS USING SHIMMER
   if (loading) {
