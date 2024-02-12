@@ -23,10 +23,16 @@ height: 100px;
     display: flex;
 }
 .res-container{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
+    /* display: flex;
+    /* justify-content: space-between; */
+   
+        flex-wrap: wrap;
+        gap: 40px;
+        margin-left: 5px;
+        display: flex;
+        justify-content: center;
+    }
+
 .res-card{
    
     margin: 5px;
@@ -57,4 +63,27 @@ height: 100px;
     cursor: pointer;
     border: 3px solid black;
     /* background-color: blue; */
+}
+.shimmer-container{
+     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+gap:40px;
+}
+.shimmer-card{
+
+    margin: 5px;
+    padding: 10px;
+   width: 200px;
+   height: 300px;
+   background-color: #f0f0f0; 
+
+
+}
+.login{
+    padding: 0 25px;
+    cursor: pointer;
+}
+.filter{
+    display:inline-flex;
 }

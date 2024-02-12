@@ -8,15 +8,15 @@ import {CDN_URL} from "./utils/constants";
       name,
       avgRating,
       costForTwo,
-      deliverTime,
-    } = resData?.info|| {};
+      sla,
+      availability,
+    } = resData?.info || {};
      return (
       <div className="res-card" >
          <img className="res-logo"
          alt="res-logo"
        src={CDN_URL + cloudinaryImageId}
         />
-    <h3>{name}</h3>
     {/* <h3>{cuisines.join(" ,")}</h3> */}
     <h3>{name}</h3>
       {cuisines && Array.isArray(cuisines) && cuisines.length > 0 ? (
@@ -26,7 +26,8 @@ import {CDN_URL} from "./utils/constants";
       )}
     <h3>Rating:-{avgRating}</h3>
     <h3>{costForTwo}</h3>
-    <h3>{deliverTime}</h3>
+    <h3>Delivery-Time :-{sla.deliveryTime}</h3>
+    <h3>{availability.nextCloseTime}</h3>
       </div>
      );
 
