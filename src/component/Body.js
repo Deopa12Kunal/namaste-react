@@ -13,7 +13,7 @@ const Body = () => {
   useEffect(() => {
     fetchData();
   }, []);
- console.log("body rendered");
+//  console.log("body rendered");
   const fetchData = async () => {
     try {
       setLoading(true); // Set loading state to true before fetching data
