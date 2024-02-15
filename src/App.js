@@ -36,7 +36,7 @@ import { RouterProvider, createBrowserRouter, Outlet } from 'react-router-dom';
       element: <Contact/>,
     },
     {
-      path: "/restaurants/:resID",
+      path: "/restaurants/:resId",
       element: <RestaurantMenu/>,
 
     },

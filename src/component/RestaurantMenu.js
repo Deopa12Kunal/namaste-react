@@ -1,26 +1,61 @@
-import { useEffect } from "react";   
-//! use effect takes two arguments 1 call back function   
+import Shimmer from "./Shimmer";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { MENU_API } from "../utils/constants";
 const RestaurantMenu = () => {
-    useEffect(() => {
-        const fetchMenu = async () => {
-            try {
-                const data = await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9715987&lng=77.5945627&restaurantId=23846&catalog_qa=undefined&submitAction=ENTER");
-                const json = await data.json();
-                console.log(json);
-            } catch (error) {
-                console.error("Error fetching menu:", error);
-            }
-        };
 
+     const[resInfo, setResInfo]= useState(null);
+     const { resId } = useParams();
+     useEffect(()=>{
         fetchMenu();
-    }, []);
+     },[]);
 
-    return(
-        <div>
-            <h1>Resataurant Menu as follows</h1>
-        </div>
-    )
+      const fetchMenu = async()=>{
+         try{
+         const data = await fetch(MENU_API+ resId);
+          const json = await data.json();
+           console.log(json);
+           setResInfo(json.data);
+         }catch (error) {
+            console.error("Error fetching menu:", error);
+          }
+      };
 
-    
-}
- export default RestaurantMenu;
+  if (resInfo === null) 
+  return <Shimmer />;
+
+  const {
+    name,
+    cuisines,
+    costForTwoMessage,
+    avgRating,
+    areaName,
+    sla,
+    totalRatingsString,
+    feeDetails,
+  } = resInfo?.cards?.card?.card?.info || {};
+
+
+  const { itemCards } =
+  resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.find(
+    (card) => card?.card?.card?.itemCards
+  )?.card?.card || {};    
+  console.log(itemCards);
+
+return(
+    <div className="menu">
+        <h1>{name}</h1>
+        <ul>
+            {/* using Map function to itterate over item cards */}
+            {itemCards.map((item)=>(
+            <li>{item.card.info.name}</li>))}
+        </ul>
+        
+       
+    </div>
+)
+
+  
+};
+
+export default RestaurantMenu;
