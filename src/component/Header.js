@@ -14,10 +14,14 @@ const Header =()=> {
             />
         </div>
         <div className="nav-items">
-            <ul>
-                <li>Home</li>
-                <li>About Us</li>
-                <li>Contact Us</li>
+            <ul>                
+                <li><Link to ="/ ">Home</Link></li>
+                <li>
+                    <Link to ="/about">About</Link>
+                </li>
+                <li>
+                    <Link to ="/contact">About</Link>
+                </li>         
                 <li>Cart</li>
                 <button className="login"
                 onClick={()=>

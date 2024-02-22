@@ -6,6 +6,7 @@ const RestaurantMenu = () => {
 
      const[resInfo, setResInfo]= useState(null);
      const { resId } = useParams();
+      console.log(resId);
      useEffect(()=>{
         fetchMenu();
      },[]);
@@ -37,21 +38,24 @@ const RestaurantMenu = () => {
 
 
   const { itemCards } =
-  resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.find(
-    (card) => card?.card?.card?.itemCards
-  )?.card?.card || {};    
+  // resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.find(
+  //   (card) => card?.card?.card?.itemCards
+  (resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[4]?.card?.card) || {};    
   console.log(itemCards);
 
 return(
     <div className="menu">
-        <h1>{name}</h1>
+        <h1>Menu</h1>
         <ul>
             {/* using Map function to itterate over item cards */}
-            {itemCards.map((item)=>(
-            <li>{item.card.info.name}</li>))}
-        </ul>
-        
-       
+            {itemCards?.map((item=>(
+            <li key = {item?.card?.info?.id}>
+              {item.card.info.name} -{"Rs-"}
+            {item.card.info.price /10}
+            
+            </li>
+           ) ))}
+        </ul>   
     </div>
 )
 
