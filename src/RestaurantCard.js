@@ -1,5 +1,4 @@
 import {CDN_URL} from "./utils/constants";
-
  const ResturantCrad = (props) =>{
     const {resData} = props;
     const {

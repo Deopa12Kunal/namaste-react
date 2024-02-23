@@ -29,7 +29,8 @@ const Body = () => {
       // filter all api data here acc to your need
 
       const filteredRestaurantData = json?.data?.cards?.filter(
-        (card) => card?.card?.card?.id == "restaurant_grid_listing" || card?.card?.card?.id  == "top_brands_for_you" 
+        (card) => card?.card?.card?.id == "top_brands_for_you"  
+        // || card?.card?.card?.id  =="restaurant_grid_listing"
 
         //!we can also add any id instead of top brands for you using (||)
       );
