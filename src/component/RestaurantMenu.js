@@ -1,26 +1,13 @@
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { MENU_API } from "../utils/constants";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 const RestaurantMenu = () => {
 
-     const[resInfo, setResInfo]= useState(null);
+    //  const[resInfo, setResInfo]= useState(null);
      const { resId } = useParams();
-      console.log(resId);
-     useEffect(()=>{
-        fetchMenu();
-     },[]);
-
-      const fetchMenu = async()=>{
-         try{
-         const data = await fetch(MENU_API+ resId);
-          const json = await data.json();
-           console.log(json);
-           setResInfo(json.data);
-         }catch (error) {
-            console.error("Error fetching menu:", error);
-          }
-      };
+     const resInfo =useRestaurantMenu(resId);
+    //   console.log(resId);
+    //  
 
   if (resInfo === null) 
   return <Shimmer />;
@@ -36,8 +23,9 @@ const RestaurantMenu = () => {
     feeDetails,
   } = resInfo?.cards?.card?.card?.info || {};
   const { itemCards } = 
-  (resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[5]?.card?.card) || 
-  (resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[6]?.card?.card) || 
+  (resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]?.card?.card) || 
+  
+  (resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card) || 
   { itemCards: [] };
 //  const { itemCards } =
 //    (resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card) || (resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card);
