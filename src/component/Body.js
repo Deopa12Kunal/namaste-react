@@ -3,6 +3,7 @@ import RestaurantCard from "../RestaurantCard";
 // import resList from "../utils/mockdata";
 import Shimmer from "./Shimmer";
  import {Link} from "react-router-dom";
+ import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurant] = useState([]);
@@ -52,6 +53,7 @@ const Body = () => {
       setLoading(false); // Ensure loading state is set to false in case of error
     }
   };
+  
   //! FOR TOP RATED RESTAURANT BUTTON
   const filterTopRatedRestaurants = () => {
     const filteredList = listOfRestaurants.filter(
@@ -59,6 +61,11 @@ const Body = () => {
     );
     setFilteredRestaurants(filteredList);
   };
+  // ! adding online status
+  const onlineStatus = useOnlineStatus();
+  if(onlineStatus ==false)
+  return (<h1>look's like you're offline pls check your internet connection</h1>);
+
 //!FOR FAKE CARDS USING SHIMMER
   if (loading) {
 return <Shimmer/>
