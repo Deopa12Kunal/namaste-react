@@ -22,14 +22,6 @@ const RestaurantMenu = () => {
     totalRatingsString,
     feeDetails,
   } = (resInfo?.cards?.[0]?.card?.card?.info) || {};
-  // resInfo?.cards?.card?.card?.info || {};
-  // (resInfo?.cards?.[0]?.card?.card?.info) || {};
-  // const { itemCards } = 
-  // (resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]?.card?.card) || 
-  
-  // (resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[4]?.card?.card) || 
-  // { itemCards: [] };
- 
   const{itemCards} = (resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card) || {};
  console.log(itemCards);
 return(

@@ -11,6 +11,7 @@ const Body = () => {
      //! creating  another state variable for only filtered restaurants
   const [filteredRestaurants , setFilteredRestaurants]= useState([]);
    const[searchText, setSearchText] = useState(" ");
+    console.log(listOfRestaurants);
 
   useEffect(() => {
     fetchData();
@@ -75,18 +76,18 @@ return <Shimmer/>
    
         
     <div className="body">
-      <div className="filter">
+      <div className="filter flex">
       
-        <div className="search">
+        <div className="search p-4 m-4">
           <input 
           type = "text"
-           className ="search-box" 
+           className ="border border-solid  border-black" 
           value={searchText}
           onChange={(e)=>{
             setSearchText(e.target.value);
           }}
           />
-          <button
+          <button className="px-5  py-1 m-4 bg-cyan-300  rounded-xl"
            onClick ={
             ()=>{
                           //! filter the restaurant card and updrade the UI
@@ -104,14 +105,17 @@ return <Shimmer/>
 >
             Search</button>
         </div>
+        <div className="px-5  py-1 m-4 flex items-center ">
         <button 
-        className="filter-btn"
+        className=" px-5 py-2  bg-gray-500 rounded-xl" 
          onClick={filterTopRatedRestaurants
          }>
           Top Rated Restaurants
         </button>
+        </div>
+        
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap ">
         {filteredRestaurants.map((restaurant, index) => (
           <Link
           key={restaurant.info.id}
