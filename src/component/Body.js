@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import RestaurantCard from "../RestaurantCard";
+import RestaurantCard,{WithPromotedLabel} from "../RestaurantCard";
 // import resList from "../utils/mockdata";
 import Shimmer from "./Shimmer";
  import {Link} from "react-router-dom";
@@ -11,6 +11,9 @@ const Body = () => {
      //! creating  another state variable for only filtered restaurants
   const [filteredRestaurants , setFilteredRestaurants]= useState([]);
    const[searchText, setSearchText] = useState(" ");
+ //TODO :create a restaurant card component which has promoted label
+ const RestaurantCardPromoted = WithPromotedLabel(RestaurantCard);
+
     console.log(listOfRestaurants);
 
   useEffect(() => {
@@ -116,12 +119,18 @@ return <Shimmer/>
         
       </div>
       <div className="flex flex-wrap ">
-        {filteredRestaurants.map((restaurant, index) => (
+        {
+        filteredRestaurants.map((restaurant, index) => (
           <Link
           key={restaurant.info.id}
           to={"/restaurants/"+ restaurant.info.id}
           >
-          <RestaurantCard resData={restaurant} />
+           {restaurant.info.isOpen ? (
+              <RestaurantCardPromoted resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+             )} 
+            
           </Link>
         ))}
       </div>

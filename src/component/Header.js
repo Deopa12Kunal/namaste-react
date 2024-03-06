@@ -5,7 +5,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 const Header =()=> {
     //! To check that after change Header component is rendered again 
     //!console.log("Header rendered ")
-     const [btnNameReact, setBtnNameReact]= useState("Login");
+     const [btnNameReact, setBtnNameReact]= useState("login");
      const onlineStatus = useOnlineStatus();
     return(
         <div className="flex justify-between bg-orange-300">
@@ -20,7 +20,7 @@ const Header =()=> {
                 <li className="px-4">
                     Online Status:{onlineStatus ?"✅" :"🔴" }
                     </li>             
-                <li className="px-4" text-base >
+                <li className="px-4 text-base" >
                     <Link to ="/ ">Home</Link></li>
                 <li className="px-4">
                     <Link to ="/about">About</Link>
