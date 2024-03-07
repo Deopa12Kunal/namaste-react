@@ -11,10 +11,9 @@ const Body = () => {
      //! creating  another state variable for only filtered restaurants
   const [filteredRestaurants , setFilteredRestaurants]= useState([]);
    const[searchText, setSearchText] = useState(" ");
- //TODO :create a restaurant card component which has promoted label
+ //!create a restaurant card component which has promoted label
  const RestaurantCardPromoted = WithPromotedLabel(RestaurantCard);
-
-    console.log(listOfRestaurants);
+    // console.log(listOfRestaurants);
 
   useEffect(() => {
     fetchData();
