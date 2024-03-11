@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import {CDN_URL} from "./utils/constants";
+import UserContext from "./utils/UserContext";
+
  const ResturantCard = (props) =>{
     const {resData} = props;
+    const {loggedInUser}= useContext(UserContext);
+
     const {
       cloudinaryImageId,
      cuisines,
@@ -35,6 +40,8 @@ import {CDN_URL} from "./utils/constants";
     {availability && availability.nextCloseTime && (
                 <h3>Next Close Time: {availability.nextCloseTime}</h3>
             )}
+                            <h3>User: {loggedInUser}</h3>
+
       </div>
      );  
  };

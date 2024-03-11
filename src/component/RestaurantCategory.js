@@ -2,7 +2,7 @@
   import ItemList from "./ItemList";
   const RestaurantCategory =({data,showItems, setShowIndex})=>{   
    //  console.log(data);
-   const handledCllicked =()=>{
+   const handledClicked =()=>{
    setShowIndex();
    };
     return (
@@ -10,7 +10,7 @@
                {/* <div className="w-6/12 bg-gray-100 my-4 shadow-sm shadow-gray-200  px-4 py-2"> */}
 
          <div className="w-6/12 mx-auto my-4 bg-gray-100 shadow-lg px-4 py-2">
-            <div className="flex justify-between cursor-pointer "onClick={handledCllicked}>
+            <div className="flex justify-between cursor-pointer "onClick={handledClicked}>
             <span className="font-bold text-xl">
                {data.title}({data.itemCards.length})
                </span>

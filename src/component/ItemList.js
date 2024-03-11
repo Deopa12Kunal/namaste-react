@@ -1,7 +1,15 @@
+import { useDispatch } from "react-redux";
 import { CDN_URL } from "../utils/constants";
+ import { addItem } from "../utils/cartSlice";
 
-const ItemList = ({ items }) => {
-    console.log(items);   
+const ItemList = ({ items, dummy }) => {
+    // console.log(items); 
+     const dispatch  = useDispatch();
+     const handleAddItem = (item)=>{ 
+        // dispatch an action when the user clicked on the button
+        dispatch(addItem(item));
+     }
+
     return (
         <div>
             {items.map((item) => (
@@ -15,7 +23,10 @@ const ItemList = ({ items }) => {
                     </div>
                     <div className="w-3/12 p-1">
                         <div className="absolute">
-                            <button className="px-3 py-0.5 rounded-md bg-white text-black hover:border-2 hover:border-black ">
+                            <button className="px-3 py-0.5 rounded-md bg-white text-black hover:border-2 hover:border-black "
+                            //TODO: here we will pass the original items present in restaurant card
+                            onClick={()=>handleAddItem(item)}
+                            >
                                 Add +
                             </button>
                         </div>

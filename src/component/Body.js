@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import RestaurantCard,{WithPromotedLabel} from "../RestaurantCard";
 // import resList from "../utils/mockdata";
 import Shimmer from "./Shimmer";
  import {Link} from "react-router-dom";
  import useOnlineStatus from "../utils/useOnlineStatus";
-
+import UserContext from "../utils/UserContext";
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurant] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -68,6 +68,7 @@ const Body = () => {
   const onlineStatus = useOnlineStatus();
   if(onlineStatus ==false)
   return (<h1>look's like you're offline pls check your internet connection</h1>);
+ const {loggedInUser,setUserName} = useContext(UserContext);
 
 //!FOR FAKE CARDS USING SHIMMER
   if (loading) {
@@ -114,6 +115,15 @@ return <Shimmer/>
          }>
           Top Rated Restaurants
         </button>
+
+        </div>
+        <div className="px-5  py-1 m-4 flex items-center ">
+          <label className="p-2">User Name </label>        
+        <input className=" px-3 border border-solid  border-black cursor-pointer hover: text-xl " 
+        value={loggedInUser}
+        onChange={(e)=> setUserName(e.target.value)
+        }
+        /> 
         </div>
         
       </div>
