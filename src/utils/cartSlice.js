@@ -15,6 +15,7 @@ const cartSlice = createSlice({
         },
          clearCart:(state)=>
          {
+            // here we are mutating the state
 state.items.length =0;
          },
     },
