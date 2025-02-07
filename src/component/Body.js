@@ -33,7 +33,7 @@ const Body = () => {
       // filter all api data here acc to your need
 
       const filteredRestaurantData = json?.data?.cards?.filter(
-        (card) => card?.card?.card?.id == "top_brands_for_you"  
+       (card) => card?.card?.card?.id == "top_brands_for_you"  
         // || card?.card?.card?.id  =="restaurant_grid_listing"
 
         //!we can also add any id instead of top brands for you using (||)
@@ -78,8 +78,8 @@ return <Shimmer/>
   return (
    
         
-    <div className="body">
-      <div className="filter flex">
+    <div className="body  pl-12">
+      <div className="filter flex  ">
       
         <div className="search p-4 m-4">
           <input 
@@ -90,7 +90,9 @@ return <Shimmer/>
             setSearchText(e.target.value);
           }}
           />
-          <button className="px-5  py-1 m-4 bg-cyan-300  rounded-xl"
+          <button className="px-5  py-1 m-4 bg-cyan-300 rounded-xl"
+
+
            onClick ={
             ()=>{
                           //! filter the restaurant card and updrade the UI
@@ -109,6 +111,7 @@ return <Shimmer/>
             Search</button>
         </div>
         <div className="px-5  py-1 m-4 flex items-center ">
+        {/* <div className="flex items-center"> */}
         <button 
         className=" px-5 py-2  bg-gray-500 rounded-xl" 
          onClick={filterTopRatedRestaurants
@@ -119,7 +122,7 @@ return <Shimmer/>
         </div>
         <div className="px-5  py-1 m-4 flex items-center ">
           <label className="p-2">User Name </label>        
-        <input className=" px-3 border border-solid  border-black cursor-pointer hover: text-xl " 
+        <input className=" px-3 border border-solid border-black cursor-pointer hover: text-xl " 
         value={loggedInUser}
         onChange={(e)=> setUserName(e.target.value)
         }
@@ -128,6 +131,7 @@ return <Shimmer/>
         
       </div>
       <div className="flex flex-wrap ">
+      {/* <div className="flex flex-wrap justify-center"> */}
         {
         filteredRestaurants.map((restaurant, index) => (
           <Link

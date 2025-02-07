@@ -1,14 +1,35 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { CDN_URL } from "../utils/constants";
- import { addItem } from "../utils/cartSlice";
+import { addItem, removeItem } from "../utils/cartSlice";
 
-const ItemList = ({ items, dummy }) => {
-    // console.log(items); 
-     const dispatch  = useDispatch();
-     const handleAddItem = (item)=>{ 
-        // dispatch an action when the user clicked on the button
-        dispatch(addItem(item));
-     }
+const ItemList = ({ items, showRemoveButton }) => {
+    const dispatch = useDispatch();
+    const cartItems = useSelector((state) => state.cart.items);
+
+    const isItemInCart = (item) => {
+        return cartItems.some(cartItem => cartItem.id === item.card.info.id);
+    };
+
+    // const handleToggleItem = (item) => {
+    //     if (isItemInCart(item)) {
+    //         console.log("Removing item:", item.card.info.id);
+    //         dispatch(removeItem({ id: item.card.info.id }));
+    //     } else {
+    //         console.log("Adding item:", item);
+    //         dispatch(addItem({ id: item.card.info.id, ...item.card.info }));
+    //     }
+    // };
+    const handleAction = (item) => {
+        if (showRemoveButton) {
+            // Remove button action
+            dispatch(removeItem(item));
+        } else {
+            // Add button action
+            dispatch(addItem(item));
+        }
+
+
+    }
 
     return (
         <div>
@@ -23,15 +44,17 @@ const ItemList = ({ items, dummy }) => {
                     </div>
                     <div className="w-3/12 p-1">
                         <div className="absolute">
-                            <button className="px-3 py-0.5 rounded-md bg-white text-black hover:border-2 hover:border-black "
-                            //TODO: here we will pass the original items present in restaurant card
-                            onClick={()=>handleAddItem(item)}
+                            {/* <button className="px-3 py-0.5 rounded-md bg-white text-black hover:border-2 hover:border-black"
+                                onClick={() => handleToggleItem(item)}
                             >
-                                Add +
-                            </button>
+                                - Add +
+                            </button> */}
+                               <button className={`${showRemoveButton ? 'remove-button' : 'add-button'} bg-slate-200 text-black px-4 py-2 rounded-lg mx-2 hover:bg-slate-500`}
+                            onClick={() => handleAction(item)}>
+                            {showRemoveButton ? 'Remove' : 'Add'}
+                        </button>
                         </div>
                         <img src={CDN_URL + item.card.info.imageId} className="w-full" alt={item.card.info.name} />
-
                     </div>
                 </div>
             ))}

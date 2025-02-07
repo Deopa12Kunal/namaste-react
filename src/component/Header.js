@@ -17,10 +17,10 @@ const Header =()=> {
       const cartItems = useSelector((store)=> store.cart.items);
 console.log(cartItems);
     return(
-        <div className="flex justify-between bg-orange-300">
+        <div className="flex justify-between bg-orange-200">
             <div className="logo-container">
                 <img
-                className="w-40"
+                className="w-20"
                 src={LOGO_URL }
             />
         </div>

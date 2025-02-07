@@ -12,6 +12,11 @@ import { Provider } from 'react-redux';
  import UserContext from './utils/UserContext';
 import appStore from './utils/appStore';
 import Cart from './component/Cart';
+import  SignUp from './component/Sign_Up';
+ import Login from './component/Login_User';
+  // const cors = require('cors')
+  // App.use(cors());
+
   const AppLayout =()=>{
      const [userName, setUserName]= useState();
      //authentication 
@@ -37,6 +42,14 @@ setUserName(data.name);
     );
   };
  const appRouter = createBrowserRouter([
+{
+  path: "/signup",
+  element: <SignUp/>,
+},  
+{
+path: "/login",
+element: <Login/>,
+},
 {
   path: "/",
   element: <AppLayout />,

@@ -15,15 +15,6 @@ import UserContext from "./utils/UserContext";
       sla,
       availability,
     } = resData?.info || {};
-    const maxLength = 45; // Set your desired maximum length here
-
-  const cuisinesString = cuisines && Array.isArray(cuisines) && cuisines.length > 0 
-    ? cuisines.join(", ") 
-    : "No cuisines available";
-
-  const truncatedCuisinesString = cuisinesString.length > maxLength 
-    ? `${cuisinesString.slice(0, maxLength)}...` 
-    : cuisinesString;
      return (
       // <div className=" p-1 m-1 w-[240px] bg-slate-200 rounded-xl hover:bg-slate-500 " >
               <div className=" p-1 m-1 w-[240px] bg-slate-200 rounded-xl hover:bg-slate-500 " >
@@ -36,12 +27,11 @@ import UserContext from "./utils/UserContext";
         />
     {/* <h3>{cuisines.join(" ,")}</h3> */}
     <h3 className="font-bold py-3 text-xl">{name}</h3>
-      {/* {cuisines && Array.isArray(cuisines) && cuisines.length > 0 ? (
+      {cuisines && Array.isArray(cuisines) && cuisines.length > 0 ? (
         <h3>{cuisines.join(", ")}</h3>
       ) : (
         <h3>No cuisines available</h3>
-      )} */}
-      <h3>{truncatedCuisinesString}</h3>
+      )}
     <h3>Rating:-{avgRating}</h3>
     <h3>{costForTwo}</h3>
     {/* <h3>Delivery-Time :-{sla.deliveryTime}</h3> */}
