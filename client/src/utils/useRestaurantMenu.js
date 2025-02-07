@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
 const BACKEND_URL =
-  process.env.REACT_APP_BACKEND_URL || "http://localhost:1234";
+  process.env.REACT_APP_BACKEND_URL ||
+  "https://namaste-react-backend-tor8.onrender.com";
 
 const useRestaurantMenu = (resId) => {
   const [resInfo, setResInfo] = useState(null);
