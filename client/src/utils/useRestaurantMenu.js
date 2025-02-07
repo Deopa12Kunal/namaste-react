@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
+// Use environment variable with fallback
 const BACKEND_URL =
-  process.env.REACT_APP_BACKEND_URL ||
-  "https://namaste-react-backend-tor8.onrender.com";
+  process.env.REACT_APP_BACKEND_URL || "http://localhost:1234";
 
 const useRestaurantMenu = (resId) => {
   const [resInfo, setResInfo] = useState(null);
