@@ -22,11 +22,10 @@ const Body = () => {
   const fetchData = async () => {
     try {
       setLoading(true); // Set loading state to true before fetching data
-      const data = await fetch(
-        "https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+     const data = await fetch(
+       "https://namaste-react-backend-tor8.onrender.com/api/restaurants"
+     );
 
-        // "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
-      );
       const json = await data.json();
       console.log(json);
  
