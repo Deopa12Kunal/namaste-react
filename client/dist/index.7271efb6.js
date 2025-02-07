@@ -36485,6 +36485,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
 var _s = $RefreshSig$();
+// Use environment variable with fallback
 const BACKEND_URL = "http://localhost:1234";
 const useRestaurantMenu = (resId)=>{
     _s();
