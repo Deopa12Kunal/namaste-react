@@ -12,8 +12,7 @@ const allowedOrigins = [
   "http://localhost:1234",
   "http://localhost:3000",
   "http://localhost:56729",
-  "https://namaste-react-backend-tor8.onrender.com",
-  "https://calm-speculoos-49815c.netlify.app",
+ 
   // Add your Netlify URL after deployment
 ];
 
