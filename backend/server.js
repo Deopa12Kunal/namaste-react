@@ -34,8 +34,10 @@ app.use(
 );
 
 // Health check route
-app.get("/", (req, res) => {
-  res.json({ message: "Server is running" });
+app.get("/restaurants/:resId", (req, res) => {
+   const { resId } = req.params;
+    console.log(`Fetching restaurant data for ID: ${resId}`);
+  res.send("Server is running");
 });
 
 // Add your API routes here
