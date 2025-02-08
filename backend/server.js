@@ -40,8 +40,10 @@ app.get("/", (req, res) => {
 
 // Add your API routes here
 // Example:
-app.get("/api/test", (req, res) => {
-  res.json({ message: "API is working" });
+app.get("/restaurants/:resId", (req, res) => {
+   const { resId } = req.params;
+    console.log(`Fetching restaurant data for ID: ${resId}`);
+  res.send("Server is running");
 });
 
 // Error handling middleware
