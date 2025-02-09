@@ -37201,7 +37201,7 @@ $RefreshReg$(_c, "RestaurantMenu");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","./Shimmer":"l5rS0","react-router-dom":"9xmpe","react":"21dqq","../utils/useRestaurantMenu":"fMOkH","./RestaurantCategory":"gNfmg","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"fMOkH":[function(require,module,exports,__globalThis) {
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react/jsx-dev-runtime":"iTorj","./Shimmer":"l5rS0","react-router-dom":"9xmpe","../utils/useRestaurantMenu":"fMOkH","./RestaurantCategory":"gNfmg"}],"fMOkH":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$253c = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
