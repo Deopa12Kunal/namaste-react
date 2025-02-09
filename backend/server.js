@@ -5,24 +5,44 @@ const fetch = (...args) =>
 require("dotenv").config();
 
 const app = express();
+app.use(express.json());
+
 const PORT = process.env.PORT || 1234;
 
+<<<<<<< HEAD
 // ✅ Allow only specific frontend origins (change as needed)
 const allowedOrigins = ["http://localhost:61196", "http://localhost:3000"];
+=======
+const allowedOrigins = [
+  "http://localhost:1234",
+  "http://localhost:3000",
+  "http://localhost:56729",
+  // "https://namaste-react-backend-tor8.onrender.com",
+  // "https://calm-speculoos-49815c.netlify.app",
+];
+>>>>>>> ee890efef48ed030c5247290c08d45a4991eeaf9
 
 app.use(
   cors({
     origin: function (origin, callback) {
+<<<<<<< HEAD
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));
+=======
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        const msg = "CORS policy does not allow access from this origin.";
+        return callback(new Error(msg), false);
+>>>>>>> ee890efef48ed030c5247290c08d45a4991eeaf9
       }
     },
     credentials: true,
   })
 );
 
+<<<<<<< HEAD
 // ✅ Fetch restaurant menu
 app.get("/api/menu/:restaurantId", async (req, res) => {
   try {
@@ -75,4 +95,39 @@ app.get("/api/menu/:restaurantId", async (req, res) => {
 // ✅ Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+=======
+// Health check route
+app.get("/restaurants/:resId", (req, res) => {
+   const { resId } = req.params;
+    console.log(`Fetching restaurant data for ID: ${resId}`);
+  res.send("Server is running");
+});
+
+// Add your API routes here
+// Example:
+app.get("/restaurants/:resId", (req, res) => {
+   const { resId } = req.params;
+    console.log(`Fetching restaurant data for ID: ${resId}`);
+  res.send("Server is running");
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: "Something broke!" });
+});
+
+// Start server
+const server = app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server is running on port ${PORT}`);
+}).on('error', (err) => {
+  console.error('Server failed to start:', err);
+});
+
+// Handle server shutdown
+process.on('SIGTERM', () => {
+  server.close(() => {
+    console.log('Server shutting down');
+  });
+>>>>>>> ee890efef48ed030c5247290c08d45a4991eeaf9
 });
