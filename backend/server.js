@@ -7,33 +7,72 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 1234;
 
-// Define allowed origins
-const allowedOrigins = [
-  "http://localhost:1234",
-  "http://localhost:3000",
-  "http://localhost:56729",
-  "https://namaste-react-backend-tor8.onrender.com",
-  "https://calm-speculoos-49815c.netlify.app",
-  // Add your Netlify URL after deployment
-];
+// ✅ Allow only specific frontend origins (change as needed)
+const allowedOrigins = ["http://localhost:61196", "http://localhost:3000"];
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      // Allow requests with no origin (like mobile apps or curl requests)
-      if (!origin) return callback(null, true);
-
-      if (allowedOrigins.indexOf(origin) === -1) {
-        const msg =
-          "The CORS policy for this site does not allow access from the specified Origin.";
-        return callback(new Error(msg), false);
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
       }
-      return callback(null, true);
     },
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );
 
-// Rest of your code remains the same...
+// ✅ Fetch restaurant menu
+app.get("/api/menu/:restaurantId", async (req, res) => {
+  try {
+    const { restaurantId } = req.params;
+    console.log("Fetching menu for restaurant:", restaurantId);
+
+    if (!restaurantId) {
+      return res.status(400).json({ error: "Missing restaurantId" });
+    }
+
+    const swiggyAPI = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.0177989&lng=72.84781199999999&restaurantId=${restaurantId}`;
+
+    const response = await fetch(swiggyAPI, {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        Accept: "application/json",
+        "Accept-Language": "en-US,en;q=0.9",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "cross-site",
+      },
+    });
+
+    // ✅ If Swiggy API fails, send error
+    if (!response.ok) {
+      console.error(`Swiggy API error: ${response.status}`);
+      return res.status(response.status).json({
+        error: `Swiggy API returned status ${response.status}`,
+      });
+    }
+
+    const text = await response.text(); // ✅ Get response as text
+    try {
+      const data = JSON.parse(text); // ✅ Parse JSON
+      res.json(data);
+    } catch (e) {
+      console.error("Response was not JSON:", text.substring(0, 200)); // ✅ Log first 200 chars
+      throw new Error("Invalid JSON response from Swiggy API");
+    }
+  } catch (error) {
+    console.error("Error fetching menu:", error);
+    res.status(500).json({
+      error: "Failed to fetch menu",
+      details: error.message,
+    });
+  }
+});
+
+// ✅ Start server
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
